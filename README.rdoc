@@ -1,0 +1,7 @@
+= flvedit
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 Marc-Andre Lafortune. See LICENSE for details.
