@@ -34,13 +34,12 @@ begin
       * insert / remote cue points or other events
       
       flvedit is meant as a replacement for FLVTool2, FLVMeta, FLVTool++
-      It can be used as a command line tool or as a ruby library.
+      It can be used as a command line tool or as a Ruby library.
     EOS
     gem.authors = ["Marc-André Lafortune"]
     gem.rubyforge_project = "flvedit"
     gem.add_dependency "packable", ">=1.2"
     gem.add_dependency "backports"
-    gem.executables << 'flvedit'
     gem.has_rdoc = true
     gem.rdoc_options << '--title' << 'FLV::Edit' <<
                            '--main' << 'README.rdoc' <<
