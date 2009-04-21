@@ -7,9 +7,10 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marc-Andr\303\251 Lafortune"]
   s.date = %q{2009-04-21}
-  s.description = %q{flvedit allows you to: * compute metadata for FLV files * merge, split or cut FLVs * insert / remote cue points or other events  flvedit is meant as a replacement for FLVTool2, FLVMeta, FLVTool++ It can be used as a command line tool or as a ruby library.}
+  s.default_executable = %q{flvedit}
+  s.description = %q{flvedit allows you to: * compute metadata for FLV files * merge, split or cut FLVs * insert / remote cue points or other events  flvedit is meant as a replacement for FLVTool2, FLVMeta, FLVTool++ It can be used as a command line tool or as a Ruby library.}
   s.email = %q{github@marc-andre.ca}
-  s.executables = ["flvedit", "flvedit"]
+  s.executables = ["flvedit"]
   s.extra_rdoc_files = [
     "LICENSE",
     "README.rdoc"
