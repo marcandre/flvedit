@@ -1,10 +1,9 @@
+require 'test/unit' 
 require 'rubygems'
-require 'test/unit'
+require 'backports'
+require_relative '../lib/flv/edit'
 require 'shoulda'
+require 'mocha'
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'flvedit'
-
-class Test::Unit::TestCase
-end
+SHORT_FLV = File.dirname(__FILE__) + "/fixtures/short.flv"
+TEMP_FLV = File.dirname(__FILE__) + "/fixtures/short_temp.flv"

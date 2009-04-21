@@ -1,0 +1,20 @@
+*** command:
+--Cut .150-.300 --keyframe_mode --Debug
+*** result:
+Header| ./test/fixtures/short.flv
+      | extra          : 
+      | has_audio      : true
+      | has_video      : true
+      | version        : 1
+0.000 | FLV::Video tag (keyframe)
+      | codec          : on2_vp6
+      | codec_id       : 4
+      | dimensions     : nil
+0.008 | FLV::Audio tag
+      | channel        : mono
+      | codec_id       : 2
+      | format         : MP3
+      | rate           : 11000
+      | sample_size    : 16
+0.061 | FLV::Audio tag
+0.100 | FLV::Video tag (interframe)

@@ -1,0 +1,18 @@
+*** command:
+--Debug 0.3
+*** result:
+0.200 | FLV::Video tag (keyframe)
+      | codec          : on2_vp6
+      | codec_id       : 4
+      | dimensions     : nil
+0.208 | FLV::Audio tag
+      | channel        : mono
+      | codec_id       : 2
+      | format         : MP3
+      | rate           : 11000
+      | sample_size    : 16
+0.261 | FLV::Audio tag
+0.300 | FLV::Video tag (interframe)
+0.313 | FLV::Audio tag
+0.365 | FLV::Audio tag
+0.400 | FLV::Video tag (interframe)

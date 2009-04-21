@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+ 
+#--
+# Copyright (c) 2009 Marc-Andre Lafortune
+# Release under the (modified) BSD License (see gem's LICENSE file)
+#++
+ 
+begin
+  require 'flv/edit'
+rescue LoadError
+  require 'rubygems'
+  require 'flv/edit'
+end
+FLV::Edit::Runner.new(ARGV).run

@@ -1,0 +1,32 @@
+*** command:
+--Debug 0.301-1
+*** result:
+0.313 | FLV::Audio tag
+      | channel        : mono
+      | codec_id       : 2
+      | format         : MP3
+      | rate           : 11000
+      | sample_size    : 16
+0.365 | FLV::Audio tag
+0.400 | FLV::Video tag (interframe)
+      | codec          : on2_vp6
+      | codec_id       : 4
+      | dimensions     : nil
+0.417 | FLV::Audio tag
+0.470 | FLV::Audio tag
+0.500 | FLV::Video tag (interframe)
+0.522 | FLV::Audio tag
+0.574 | FLV::Audio tag
+0.600 | FLV::Video tag (interframe)
+0.626 | FLV::Audio tag
+0.679 | FLV::Audio tag
+0.700 | FLV::Video tag (interframe)
+0.731 | FLV::Audio tag
+0.783 | FLV::Audio tag
+0.800 | FLV::Video tag (interframe)
+0.835 | FLV::Audio tag
+0.888 | FLV::Audio tag
+0.900 | FLV::Video tag (interframe)
+0.940 | FLV::Audio tag
+0.992 | FLV::Audio tag
+1.000 | FLV::Video tag (interframe)

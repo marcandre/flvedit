@@ -1,0 +1,5 @@
+= flvedit --- History
+
+== Version 0.6 - April 21, 2009
+
+=== Initial release.

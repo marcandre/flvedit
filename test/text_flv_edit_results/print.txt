@@ -1,0 +1,16 @@
+*** command:
+--Print
+*** result:
+0.000 | FLV::Event tag
+      | event          : onMetaData
+      | audiocodecid   : 2
+      | audiodatarate  : 16
+      | audiodelay     : 0
+      | canSeekToEnd   : 1
+      | creationdate   : Fri Feb 03 122553 2006\n
+      | duration       : 16.9
+      | framerate      : 10
+      | height         : 154
+      | videocodecid   : 4
+      | videodatarate  : 40
+      | width          : 192

@@ -1,0 +1,38 @@
+*** command:
+-n 10 --Debug
+*** result:
+Header| ./test/fixtures/short.flv
+      | extra          : 
+      | has_audio      : true
+      | has_video      : true
+      | version        : 1
+0.000 | FLV::Event tag
+      | event          : onMetaData
+      | audiocodecid   : 2
+      | audiodatarate  : 16
+      | audiodelay     : 0
+      | canSeekToEnd   : 1
+      | creationdate   : Fri Feb 03 122553 2006\n
+      | duration       : 16.9
+      | framerate      : 10
+      | height         : 154
+      | videocodecid   : 4
+      | videodatarate  : 40
+      | width          : 192
+0.000 | FLV::Audio tag
+      | channel        : mono
+      | codec_id       : 2
+      | format         : MP3
+      | rate           : 11000
+      | sample_size    : 16
+0.000 | FLV::Video tag (keyframe)
+      | codec          : on2_vp6
+      | codec_id       : 4
+      | dimensions     : nil
+0.052 | FLV::Audio tag
+0.100 | FLV::Video tag (interframe)
+0.104 | FLV::Audio tag
+0.156 | FLV::Audio tag
+0.200 | FLV::Video tag (keyframe)
+0.208 | FLV::Audio tag
+0.261 | FLV::Audio tag

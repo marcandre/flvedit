@@ -1,7 +1,90 @@
-= flvedit
+= FLVEdit - Flash video manipulation
 
-Description goes here.
+FLVEdit is a tool that will read or edit FLV files to:
+* generate meta data
+* add/remove cue points
+* join files
+* inspect files
 
-== Copyright
+It is meant as an improved FLVTool2, fixing the shortfalls that prompted others to write FLVTool++ & FLVMeta (see comparison chart)
 
-Copyright (c) 2009 Marc-Andre Lafortune. See LICENSE for details.
+FLVEdit can be used either as a command-line command or as a ruby library.
+
+== This is not a stable release
+<b>Warning:</b> The basic functionality is there, but I'll be improving features and documentation. Until version 1.0, there will most likely be many changes to the command line interface and the library API.
+
+Comments & requests welcome...
+
+== Installation
+
++flvedit+ is a gem mirrored on Rubyforge and can thus be installed with:
+
+  sudo gem install flvedit
+
+flvedit is compatible with Ruby 1.8 and 1.9 
+
+== Command-line tool
+
+Type 'flvedit' for description of commands.
+
+== Library
+
+FLVEdit is written in ruby and divided in two layers. 
+
+=== FLV file format
+The FLV layer handles the FLV file format. It makes reading and writing FLV files a breeze:
+
+	FLV::File.open("example.flv") {|f| f.to_a }  # ==> [<#FLV::Header...>, <#FLV::Tag...>, ...]
+
+The main class is FLV::Tag with its different possible bodies: FLV::Audio, FLV::Video and most importantly FLV::Event for all meta data related information (onMetaData, onCuePoint, ...)
+
+The data packing and unpacking relies on the packable[http://github.com/marcandre/packable] library.
+
+=== FLV::Edit tool
+
+The FLV::Edit layer is the command-line tool itself. The FLV::Edit::Runner class parses the options and builds a chain of processors to apply to some flv files. Processors all derive from FLV::Edit::Processor::Base and only need to specify what to do for the type of data it wants to process. A simplistic example to use this level:
+
+	class CountCuePoints < FLV::Edit::Processor::Base
+		attr_writer :count
+		def on_cue_point(cue)
+			@count ||= 0
+			@count += 1
+		end
+	end
+
+	# Call manually
+	count =
+		FLV::File.open("example.flv") do |f|
+		  CountCuePoints.new(f).process_all.count
+		end
+
+	# Chain with other commands:
+	count = FLV::Edit::Runner.new([CountCuePoints, FLV::Edit::Processor::Debug], :files => "example.swf").run.count
+
+See FLV::Edit::Processor::Base for details on how the processing works
+
+== Comparisons with existing tools
+
+=== FLVTool2
+
+Features:
+* Can join (concat) flv files
+* Won't load the whole files in memory all at once
+* Won't choke on read-only files
+* Supports extented timestamps (for flv over... 4 hours!)
+
+Code:
+* Complete rewrite
+* More ruby-oriented
+* Commented
+* Unit tests
+* Easier to use library
+* Easily expandable with your own processing
+
+=== Compared to FLVTool++
+* Handles cue points
+* Usable as a library
+<to be completed>
+
+=== Compared to FLVMeta
+<to be completed>
