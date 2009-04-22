@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{flvedit}
-  s.version = "0.6.1"
+  s.version = "0.6.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marc-Andr\303\251 Lafortune"]
-  s.date = %q{2009-04-21}
+  s.date = %q{2009-04-22}
   s.default_executable = %q{flvedit}
   s.description = %q{flvedit allows you to: * compute metadata for FLV files * merge, split or cut FLVs * insert / remote cue points or other events  flvedit is meant as a replacement for FLVTool2, FLVMeta, FLVTool++ It can be used as a command line tool or as a Ruby library.}
   s.email = %q{github@marc-andre.ca}
@@ -34,6 +34,8 @@ Gem::Specification.new do |s|
     "lib/flv/edit/processor/command_line.rb",
     "lib/flv/edit/processor/cut.rb",
     "lib/flv/edit/processor/debug.rb",
+    "lib/flv/edit/processor/dispatcher.rb",
+    "lib/flv/edit/processor/filter.rb",
     "lib/flv/edit/processor/head.rb",
     "lib/flv/edit/processor/join.rb",
     "lib/flv/edit/processor/meta_data_maker.rb",
