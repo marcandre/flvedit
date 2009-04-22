@@ -1,7 +1,8 @@
 module FLV
   module Edit
     module Processor
-      # Add is a Processor (see Base) added automatically as the last level
+
+      # CommandLine is a Processor (see Base) added automatically as the last level
       # for all command line executions
       class CommandLine < Base
         include Dispatcher

@@ -1,13 +1,13 @@
 module FLV
   module Edit  
     module Processor
-      # Processors are used to process FLV files. Processors form are chain and the data (header and tags) will 'flow'
-      # through the chain in sequence. Each processor can inspect the data and change the flow,
-      # either by modifying the data, inserting new data in the flow or stopping the propagation of data.
+
+      # Dispatcher can be included in a processor and will makeit easy to 
+      # process the chunks according to their type.
       #
-      # A FLV file can be seen as a sequence of chunks, the first one being a Header and the following ones
-      # a series of Tags with different types of bodies: Audio, Video or Event. Events store all meta data
-      # related information: onMetaData, onCuePoint, ...
+      # Chunks can be Header or Tags.
+      # The latter have different types of bodies: Audio, Video or Event.
+      # Events store all meta data related information: onMetaData, onCuePoint, ...
       #
       # To tap into the flow of chunks, a processor can define any of the following methods:
       #   on_chunk
@@ -26,20 +26,18 @@ module FLV
       # All of these methods will have one argument: the current chunk being processed.
       # For example, if the current chunk is an 'onMetaData' event, then
       # the following will be called (from the most specialized to the least).
-      #   processor.on_meta_data(chunk)
-      #   processor.on_event(chunk)
-      #   processor.on_chunk(chunk)
-      #   # later on, the next processor will handle it:
-      #   next_processor.on_meta_data(chunk)
-      #   #...
+      #   on_meta_data(chunk)
+      #   on_event(chunk)
+      #   on_chunk(chunk)
       #
-      # The methods need not return anything. It is assumed that the chunk will continue to flow through the
-      # processing chain. When the chunk should not continue down the chain, call +absorb+.
-      # To insert other tags in the flow, call +dispatch_instead+.
-      # Finally, it's possible to +stop+ the processing of the file completely.
+      # The methods need not return anything. It is assumed that the chunk should be output.
+      # If that's not the case, call +#absorb+.
+      # To output other tags instead, call +#dispatch_instead+.
       #
-      # It is possible to look back at already processed chunks (up to a certain limit) with +look_back+
-      # or even in the future with +look_ahead+
+      # Note that both #absorb and #dispatch_instead stop the processing for the current chunk,
+      # so if #on_video calls #absorb, for example, then there won't be a call to #on_tag or #on_chunk.
+      #
+      # Finally, it's possible to +#stop+ the processing of the current source completely.
       #
       module Dispatcher
         def initialize(*)
@@ -50,10 +48,12 @@ module FLV
           end
         end
 
+        # Stops the processing for the current chunk
         def absorb(*) # Note: the (*) is so that we can alias events like on_meta_data
           throw :absorb
         end
       
+        # Stops the processing of the current source completely.
         def stop
           throw :stop
         end
@@ -65,33 +65,17 @@ module FLV
             super{|chunk| dispatch_chunk(chunk)}
           end
         end
-      
-        def process_next_file
-          dispatch_chunks(@source)
-        end
         
-        def dispatch_chunks(enum)
-          enum.each do |chunk|
-            dispatch_chunk(chunk)
-          end
-        end
-
-        def dispatch_chunk(chunk)
-          evt = chunk.main_event
-          catch :absorb do
-            EVENT_TRIGGER_LIST[evt].each do |event|
-              send(event, chunk) if respond_to?(event)
-            end
-            @block.call chunk
-          end
-        end
-      
+        # Call #dispatch_instead with a list of chunks.
+        # These chunks will not be processed by the current processor
+        # but will be output directly. This stops the processing for
+        # the current chunk.
         def dispatch_instead(*chunks)
           chunks.each do |chunk|
             @block.call chunk
           end
           absorb
-        end
+        end      
 
         EVENT_TRIGGER = {
           :on_header      => :on_chunk,
@@ -115,18 +99,30 @@ module FLV
         EVENT_TRIGGER_LIST = Hash.new{|h, k| h[k] = [k] + h[EVENT_TRIGGER[k]]}.tap{|h| h[nil] = []; h.values_at(*MAIN_EVENTS)}.freeze
       
         module ClassMethods
+          # Call give a list of events of #absorb to always absorb chunks of these types.
           def absorb(*events)
             events.each{|evt| alias_method evt, :absorb}
           end
         end
         
-        def self.included(base)
+        def self.included(base) # :nodoc:
           base.extend ClassMethods
         end
-        
+      private
+        def dispatch_chunk(chunk) # :nodoc:
+          evt = chunk.main_event
+          catch :absorb do
+            EVENT_TRIGGER_LIST[evt].each do |event|
+              send(event, chunk) if respond_to?(event)
+            end
+            @block.call chunk
+          end
+        end
       end #class Base
 
 
+      # We supplement the basic FLV classes with a #main_event method
+      # which returns the most specialize event for that chunk.
       module MainEvent # :nodoc:
         module Header
           def main_event

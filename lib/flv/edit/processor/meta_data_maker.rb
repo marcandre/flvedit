@@ -1,6 +1,9 @@
 module FLV
   module Edit
     module Processor
+      # MetaDataMaker is a Processor class (see Base) that computes the metadata
+      # for its sources. The metadata for the current source is accessible with #meta_data
+      # It is used by Update.
       class MetaDataMaker < Base
         include Dispatcher        
         CHUNK_LENGTH_SIZE = 4 # todo: calc instead?

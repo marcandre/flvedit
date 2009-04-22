@@ -2,13 +2,21 @@ module FLV
   module Edit  
     module Processor
 
+      # Join is a Processor class (see Base and desc)
       class Join < Base
+        desc "Joins all the inputs together."
+
         include Dispatcher
-        desc "Join the FLV files"
     
+        def each_source_with_join
+          return to_enum(:each_source) unless block_given?
+          yield
+        end
+        alias_method_chain :each_source, :join
+
         def each(&block)
           return to_enum unless block_given?
-          each_source { super }
+          each_source_without_join { super }
         end
 
         def on_tag(tag)

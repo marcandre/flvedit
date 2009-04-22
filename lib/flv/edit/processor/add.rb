@@ -12,7 +12,7 @@ module FLV
 
         include Dispatcher
         
-        def setup
+        def on_header(tag)
           @add = (options[:add_tags] || read_tag_file).sort_by(&:timestamp)
         end
         

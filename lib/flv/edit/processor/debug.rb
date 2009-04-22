@@ -3,6 +3,8 @@ require_relative "printer"
 module FLV
   module Edit  
     module Processor
+
+      # Debug is a Processor class (see Base and desc)
       class Debug < Base
         include Filter
         desc ["Prints out the details of all tags. Information that stays the same",

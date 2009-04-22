@@ -1,6 +1,8 @@
 module FLV
   module Edit
     module Processor
+
+      # Save is a Processor class (see Base and desc)
       class Save < Base
         desc "Saves the result to PATH", :param => {:class => String, :name => "PATH"}
         

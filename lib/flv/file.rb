@@ -1,4 +1,7 @@
 module FLV
+  # FLV::File provide methods to read a FLV file easily.
+  # Interface is similar to ::File, except that #each will
+  # return FLV chunks instead of lines.
   module File
     def each(*arg, &block)
       return super unless arg.empty?

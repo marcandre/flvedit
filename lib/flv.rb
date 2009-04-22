@@ -1,12 +1,9 @@
 require 'rubygems'
 require 'backports'
-
-# utilities
-require_relative 'flv/util/double_check'
-
-# packing of FLV objects:
 require 'packable'
-require_relative 'flv/packing'
+
+# Base & Utilities
+require_relative 'flv/util/double_check'
 require_relative 'flv/base'
 
 # FLV body of tags
@@ -17,8 +14,11 @@ require_relative 'flv/body'
 
 # FLV chunks (tags & header)
 require_relative 'flv/timestamp'
-require_relative 'flv/tag'
 require_relative 'flv/header'
+require_relative 'flv/tag'
+
+# packing of FLV objects:
+require_relative 'flv/packing'
 
 # finally:
 require_relative 'flv/file'

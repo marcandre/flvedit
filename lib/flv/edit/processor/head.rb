@@ -1,6 +1,8 @@
 module FLV
   module Edit
     module Processor
+
+      # Head is a Processor class (see Base and desc)
       class Head < Base
         desc "Processes only the first NB tags.", :param => {:class => Integer, :name => "NB"}, :shortcut => "n"
 

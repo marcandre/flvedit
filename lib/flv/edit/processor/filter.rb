@@ -1,6 +1,14 @@
 module FLV
   module Edit  
     module Processor
+      
+      # Basic processors can include Filter which
+      # provides a pretty simple #each.
+      # It will call #before_filter then
+      # #filter(chunk) for each chunk.
+      # If #filter returns +:skip+, the chunk won't be yielded
+      # #filter can also stops altogether the processing
+      # of the current source by calling #stop. 
       module Filter
         def each
           return to_enum unless block_given?

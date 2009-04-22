@@ -1,7 +1,6 @@
 require 'singleton'
 
 module FLV
-  class Event < Hash ; end
   # FLV files can contain structured data. This modules makes it easy to (un)pack that data.
   # The packing option +flv_value+ can (un)pack any kind of variable.
   # It corresponds to +SCRIPTDATAVALUE+ in the official FLV file format spec.

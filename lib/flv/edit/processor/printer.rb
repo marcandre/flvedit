@@ -2,6 +2,7 @@ module FLV
   module Edit  
     module Processor
       
+      # Printer is a small utility class to print out FLV chunks.
       class Printer
         def initialize(io, options={})
           @io = io
