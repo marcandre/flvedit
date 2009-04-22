@@ -4,8 +4,14 @@ module FLV
     module Processor
       class Print < Base
         desc "Prints out meta data to stdout"
-        def on_meta_data(tag)
-          tag.debug(Printer.new(stdout))
+        include Filter
+        
+        def before_filter
+          @printer = Printer.new(options[:out])
+        end
+
+        def filter(tag)
+          tag.debug(@printer) if tag.is? :onMetaData
         end
       end
     end

@@ -1,7 +1,8 @@
 module FLV
   module Edit
     module Processor
-      class MetaDataMaker < Base        
+      class MetaDataMaker < Base
+        include Dispatcher        
         CHUNK_LENGTH_SIZE = 4 # todo: calc instead?
         TAG_HEADER_SIZE = 11 # todo: calc instead?
         TOTAL_EXTRA_SIZE_PER_TAG = CHUNK_LENGTH_SIZE + TAG_HEADER_SIZE

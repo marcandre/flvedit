@@ -7,10 +7,10 @@ module FLV
     module Processor
 
       class Add < Base
+        include Dispatcher
         desc "Adds tags from the xml or yaml file PATH (default: tags.yaml/xml)", :param => {:name => "[PATH]"}
         
-        def initialize(*)
-          super
+        def setup
           @add = (options[:add_tags] || read_tag_file).sort_by(&:timestamp)
         end
         

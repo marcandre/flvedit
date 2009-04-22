@@ -31,7 +31,15 @@ module FLV
     
     def debug(format, *)
       format.header("Header", path)
-      format.values(to_h.tap{|h| h.delete(:path)})
+      format.values(to_h.tap{|h| [:path, :timestamp, :body].each{|key| h.delete(key)}})
+    end
+    
+    def timestamp
+      0
+    end
+    
+    def body
+      self
     end
   end
 end

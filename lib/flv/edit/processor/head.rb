@@ -3,13 +3,15 @@ module FLV
     module Processor
       class Head < Base
         desc "Processes only the first NB tags.", :param => {:class => Integer, :name => "NB"}, :shortcut => "n"
-        def on_header(header)
-          @count = self.options[:head]
-        end
 
-        def on_tag(tag)
-          throw :stop if (@count -= 1) < 0
+        def each
+          count = options[:head]
+          source.each_with_index do |chunk, i|
+            yield chunk
+            break if i >= count # inclusive because we're not counting the header
+          end
         end
+        
       end
     end
   end

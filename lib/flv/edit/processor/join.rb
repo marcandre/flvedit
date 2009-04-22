@@ -3,10 +3,12 @@ module FLV
     module Processor
 
       class Join < Base
+        include Dispatcher
         desc "Join the FLV files"
     
-        def process_next_file
-          dispatch_chunks(@source) while @source.has_next_file?
+        def each(&block)
+          return to_enum unless block_given?
+          each_source { super }
         end
 
         def on_tag(tag)

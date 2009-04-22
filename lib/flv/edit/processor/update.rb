@@ -4,6 +4,7 @@ module FLV
   module Edit
     module Processor
       class Update < Base
+        include Dispatcher
         desc "Updates FLV with an onMetaTag event"
         def initialize(source=nil, options={})
           super
@@ -11,6 +12,7 @@ module FLV
         end
       
         def each(&block)
+          return to_enum unless block_given?
           @meta_data_maker.each {}
         ensure  # even if each throws, we better call super otherwise we won't be synchronized anymore!
           super
