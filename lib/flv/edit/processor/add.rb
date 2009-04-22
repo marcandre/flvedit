@@ -6,9 +6,11 @@ module FLV
   module Edit
     module Processor
 
+      # Add is a Processor (see Base and desc)
       class Add < Base
-        include Dispatcher
         desc "Adds tags from the xml or yaml file PATH (default: tags.yaml/xml)", :param => {:name => "[PATH]"}
+
+        include Dispatcher
         
         def setup
           @add = (options[:add_tags] || read_tag_file).sort_by(&:timestamp)

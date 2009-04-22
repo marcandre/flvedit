@@ -16,7 +16,7 @@ module FLV
         
         def each
           return to_enum unless block_given?
-          source.each do |chunk|
+          super do |chunk|
             @out << chunk
             yield chunk
           end

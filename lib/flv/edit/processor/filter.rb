@@ -6,7 +6,7 @@ module FLV
           return to_enum unless block_given?
           before_filter
           catch :stop do
-            source.each do |chunk|
+            super do |chunk|
               yield chunk unless filter(chunk) == :skip
             end
           end

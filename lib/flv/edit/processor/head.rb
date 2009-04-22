@@ -6,9 +6,9 @@ module FLV
 
         def each
           count = options[:head]
-          source.each_with_index do |chunk, i|
+          super do |chunk|
             yield chunk
-            break if i >= count # inclusive because we're not counting the header
+            break if (count -= 1) < 0 # after the yield because we're not counting the header
           end
         end
         

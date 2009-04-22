@@ -62,7 +62,7 @@ module FLV
           return to_enum unless block_given?
           @block = block
           catch :stop do
-            source.each{|chunk| dispatch_chunk(chunk)}
+            super{|chunk| dispatch_chunk(chunk)}
           end
         end
       
