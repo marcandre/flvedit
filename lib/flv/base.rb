@@ -13,15 +13,17 @@ module FLV
     def getters(of=self)
       of.class.ancestors.
         map{|k| k.instance_methods(false)}.
-        inject{|proper, methods| proper -= methods}.  # tricky: first ancestor is of.class, so that's what we start with
+        inject(:-).  # cute and tricky! remember that the first ancestor is of.class itself, so that's what we start with
         select{|m| of.class.instance_method(m).arity.between?(-1,0)}
     end
     
-    def to_h(attributes = getters)
-      Hash[attributes.map do |a|
-        a = a.to_s.delete("@").to_sym
-        [a, send(a)]
-      end]
+    def to_hash(attributes = getters)
+      Hash[
+        attributes.map do |a|
+          a = a.to_s.delete("@").to_sym
+          [a, send(a)]
+        end
+      ]
     end
     
     def is?(what)

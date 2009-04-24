@@ -11,9 +11,9 @@ module FLV
       end
     end
     
-    module InstanceMethods # :nodoc:
+    module InstanceMethods
       def debug(format, *) #:nodoc
-        format.values(to_h)
+        format.values(to_hash)
       end
 
       def is?(what)
@@ -35,11 +35,12 @@ module FLV
       end
     end 
     
-    module InstanceMethodsWhenString # :nodoc:
+    module InstanceMethodsWhenString
       # Returns an +Integer+ computed from bits specified by +which+.
       # The 0th bit is the most significant bit of the first character.
       # +which+ can designate a range of bits or a single bit
       def read_bits(which)
+        # :reading_this => :headache, sorry
         which = which..which if which.is_a? Integer
         first_byte, last_byte = which.first >> 3, which.max >> 3
         return (getbyte(first_byte) >> (7 & ~which.max)) & ~(~1 << which.max-which.first) if(first_byte == last_byte)

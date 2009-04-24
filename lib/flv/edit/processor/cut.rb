@@ -5,7 +5,7 @@ module FLV
       # Cut is a Processor class (see Base and desc)
       class Cut < Base
         desc ["Cuts selects the tags within RANGE.",
-              "The timestamps are offset so that the first tag as timestamp 0"],
+              "The timestamps are offset so that the first tag has timestamp 0"],
               :param => {:class => TimestampRange, :name => "RANGE"}, :shortcut => "x"
 
         include Filter

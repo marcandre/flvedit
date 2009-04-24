@@ -44,7 +44,7 @@ module FLV
       
         # Simple utility going through each chunk of each source
         def process_all
-          each_source{each{}}
+          each_source{ each{} }
         end
 
       protected

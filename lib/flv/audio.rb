@@ -6,7 +6,7 @@ module FLV
   class Audio < String
     include Body
 
-    FORMATS = Hash.new{|h, key| "Unknown audio format: #{key}"}.merge(
+    FORMATS = Hash.new{|h, key| "Unknown audio format: #{key}"}.merge!(
       0  => :"Linear PCM, platform endian"  ,
       1  => :ADPCM                          ,
       2  => :MP3                            ,
@@ -29,7 +29,10 @@ module FLV
       :"MP3 8-kHz"              => {:rate => 8000}
     ).freeze
     
-    CHANNELS = { 0 => :mono, 1 => :stereo}.freeze
+    CHANNELS = {
+      0 => :mono,
+      1 => :stereo
+    }.freeze
 
     def codec_id
       read_bits(0..3)
