@@ -26,11 +26,13 @@ module FLV
        8 => [Hash, :flv_with_size],
        9 => EndOfList ,
       10 => Array     ,
-      11 => Time
+      11 => Time      ,
+      nil => NilClass
     ).freeze
     
     CLASS_TO_TYPE = Hash.new do |h, klass|
-      h[klass] = h[klass.superclass] # Makes it such that CLASS_TO_TYPE[Fixnum] = CLASS_TO_TYPE[Integer]
+      # Makes it such that CLASS_TO_TYPE[Fixnum] = CLASS_TO_TYPE[Integer], etc.
+      h[klass] = h[klass.superclass]
     end.merge!(TYPE_TO_CLASS.invert).merge!(
       Event => TYPE_TO_CLASS.key([Hash, :flv_with_size]), # Write Events as hashes with size
       FalseClass => TYPE_TO_CLASS.key(TrueClass)
@@ -40,6 +42,7 @@ module FLV
     Object.packers.set(:flv_value) do |packer|
       packer.write do |io|
         type_nb = CLASS_TO_TYPE[self.class]
+        raise "Trying to write #{self.inspect}" unless type_nb
         klass, format = TYPE_TO_CLASS[type_nb]
         io << [type_nb, :char] << [self, format || :flv]
       end
@@ -100,7 +103,7 @@ module FLV
     Hash.packers.set(:flv) do |packer|
       packer.write do |io|
         each do |key, value|
-          io << [key.to_s, :flv] << [value, :flv_value]
+          io << [key.to_s, :flv] << [value, :flv_value] rescue raise "Hash[#{key}] is set to #{value.inspect}"
         end
         io << ["", :flv] << [EndOfList.instance, :flv_value]
       end

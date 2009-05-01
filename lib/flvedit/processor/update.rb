@@ -10,17 +10,19 @@ module FLV
         desc "Updates FLV with an onMetaTag event containing all the relevant information."
         def initialize(source=nil, options={})
           super
-          @meta_data_maker = MetaDataMaker.new(source.dup, options)
+          @meta_data_maker = MetaDataMaker.new(source.clone, options)
         end
       
       
-        def each(&block)
+        def each
           return to_enum unless block_given?
           begin
             @meta_data_maker.each {}
-          ensure  # even if each throws, we better call super otherwise we won't be synchronized anymore!
+          rescue Exception => e  # even if each throws, we better call super otherwise we won't be synchronized anymore!
             super rescue nil
-            raise if $!
+            raise e
+          else
+            super
           end
         end
       

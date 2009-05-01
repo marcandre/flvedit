@@ -47,6 +47,10 @@ module FLV
           each_source{ each{} }
         end
 
+        def clone
+          self.class.new(source.try(:clone), options)
+        end
+
       protected
         attr_reader :source
         

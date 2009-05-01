@@ -13,7 +13,7 @@ module FLV
       def run
         commands = [*@commands].map{|c| c.is_a?(Class) ? c : Processor.const_get(c.to_s.camelize)}
         commands.unshift Processor::Reader
-        commands << Processor::CommandLine unless options[:dont_catch_errors]
+        commands << Processor::CommandLine unless options[:trace]
         Processor.chain(commands, @options).process_all
       end
       

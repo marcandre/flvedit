@@ -40,7 +40,8 @@ module FLV
           parser.separator "Switches:"
           [
             [:keyframe_mode,      "Keyframe mode slides on_cue_point(navigation) tags added by the",
-                                  "add command to nearest keyframe position"]
+                                  "add command to nearest keyframe position"],
+            [:trace,              "Show backtrace for errors"]
           ].each do |switch, *desc|
             shortcut = desc.first.is_a?(Symbol) ? desc.shift.to_s : switch.to_s[0..0]
             full = desc.first.is_a?(Class) ? "--#{switch.to_s} N" : "--#{switch.to_s}"

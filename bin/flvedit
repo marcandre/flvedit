@@ -6,9 +6,13 @@
 #++
  
 begin
-  require 'flv/edit'
+  require 'flvedit'
 rescue LoadError
-  require 'rubygems'
-  require 'flv/edit'
+  begin
+    require 'rubygems'
+    require 'flvedit'
+  rescue LoadError
+    require 'lib/flvedit'
+  end
 end
 FLV::Edit::Runner.new(ARGV).run

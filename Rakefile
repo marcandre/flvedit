@@ -39,7 +39,7 @@ begin
     gem.authors = ["Marc-André Lafortune"]
     gem.rubyforge_project = "flvedit"
     gem.add_dependency "packable", ">=1.2"
-    gem.add_dependency "backports", ">=1.5"
+    gem.add_dependency "backports", ">=1.6.8"
     gem.has_rdoc = true
     gem.rdoc_options << '--title' << 'FLV::Edit' <<
                            '--main' << 'README.rdoc' <<

@@ -95,7 +95,7 @@ module FLV
             :canSeekToEnd           => @info[Video].last.frame_type == :keyframe,
             :lastkeyframetimestamp  => @key_frames.last.first || 0
           ) if meta[:hasVideo]
-        
+          
           meta.merge!(
             :stereo                 => @info[Audio].first.channel == :stereo,
             :audiosamplerate        => @info[Audio].first.rate,

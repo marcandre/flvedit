@@ -20,7 +20,7 @@ class TestFlvEdit < Test::Unit::TestCase
     should "save" do
       assert !File.exist?(TEMP_FLV)
       runner = FLV::Edit::Runner.new([SHORT_FLV, "--Update", "--Save", TEMP_FLV])
-      runner.options[:dont_catch_errors] = true
+      runner.options[:trace] = true
       runner.run
       assert File.exist?(TEMP_FLV)
     end

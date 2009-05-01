@@ -1,10 +1,10 @@
 require 'rubygems'
 require 'backports'
-require_relative '../flv'
-require_relative 'edit/version'
-require_relative 'edit/options'
-require_relative 'edit/processor'
-require_relative 'edit/runner'
+require_relative 'flvedit/flv'
+require_relative 'flvedit/version'
+require_relative 'flvedit/options'
+require_relative 'flvedit/processor'
+require_relative 'flvedit/runner'
 
 #todo Change bin/flvedit
 #todo Auto write to files

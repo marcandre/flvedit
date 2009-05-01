@@ -20,6 +20,7 @@ module FLV
         end
         
         def each
+          p "Opening #{@sources.first}"
           FLV::File.open(@sources.shift) do |f|
             @source = f
             super

@@ -12,7 +12,7 @@ class TestFlvEdit < Test::Unit::TestCase
           Time.stubs(:now).returns(Time.utc(2008,"dec",20))
           @result = ""
           runner = FLV::Edit::Runner.new(args)
-          runner.options[:dont_catch_errors] = true
+          runner.options[:trace] = true
           runner.options[:out] = StringIO.new(@result)
           runner.run
         end
