@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{flvedit}
-  s.version = "0.6.2"
+  s.version = "0.6.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marc-Andr\303\251 Lafortune"]
-  s.date = %q{2009-04-22}
+  s.date = %q{2009-05-01}
   s.default_executable = %q{flvedit}
   s.description = %q{flvedit allows you to: * compute metadata for FLV files * merge, split or cut FLVs * insert / remote cue points or other events  flvedit is meant as a replacement for FLVTool2, FLVMeta, FLVTool++ It can be used as a command line tool or as a Ruby library.}
   s.email = %q{github@marc-andre.ca}
@@ -22,38 +22,38 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION.yml",
     "bin/flvedit",
-    "lib/flv.rb",
-    "lib/flv/audio.rb",
-    "lib/flv/base.rb",
-    "lib/flv/body.rb",
-    "lib/flv/edit.rb",
-    "lib/flv/edit/options.rb",
-    "lib/flv/edit/processor.rb",
-    "lib/flv/edit/processor/add.rb",
-    "lib/flv/edit/processor/base.rb",
-    "lib/flv/edit/processor/command_line.rb",
-    "lib/flv/edit/processor/cut.rb",
-    "lib/flv/edit/processor/debug.rb",
-    "lib/flv/edit/processor/dispatcher.rb",
-    "lib/flv/edit/processor/filter.rb",
-    "lib/flv/edit/processor/head.rb",
-    "lib/flv/edit/processor/join.rb",
-    "lib/flv/edit/processor/meta_data_maker.rb",
-    "lib/flv/edit/processor/print.rb",
-    "lib/flv/edit/processor/printer.rb",
-    "lib/flv/edit/processor/reader.rb",
-    "lib/flv/edit/processor/save.rb",
-    "lib/flv/edit/processor/update.rb",
-    "lib/flv/edit/runner.rb",
-    "lib/flv/edit/version.rb",
-    "lib/flv/event.rb",
-    "lib/flv/file.rb",
-    "lib/flv/header.rb",
-    "lib/flv/packing.rb",
-    "lib/flv/tag.rb",
-    "lib/flv/timestamp.rb",
-    "lib/flv/util/double_check.rb",
-    "lib/flv/video.rb",
+    "lib/flvedit.rb",
+    "lib/flvedit/flv.rb",
+    "lib/flvedit/flv/audio.rb",
+    "lib/flvedit/flv/base.rb",
+    "lib/flvedit/flv/body.rb",
+    "lib/flvedit/flv/event.rb",
+    "lib/flvedit/flv/file.rb",
+    "lib/flvedit/flv/header.rb",
+    "lib/flvedit/flv/packing.rb",
+    "lib/flvedit/flv/tag.rb",
+    "lib/flvedit/flv/timestamp.rb",
+    "lib/flvedit/flv/util/double_check.rb",
+    "lib/flvedit/flv/video.rb",
+    "lib/flvedit/options.rb",
+    "lib/flvedit/processor.rb",
+    "lib/flvedit/processor/add.rb",
+    "lib/flvedit/processor/base.rb",
+    "lib/flvedit/processor/command_line.rb",
+    "lib/flvedit/processor/cut.rb",
+    "lib/flvedit/processor/debug.rb",
+    "lib/flvedit/processor/dispatcher.rb",
+    "lib/flvedit/processor/filter.rb",
+    "lib/flvedit/processor/head.rb",
+    "lib/flvedit/processor/join.rb",
+    "lib/flvedit/processor/meta_data_maker.rb",
+    "lib/flvedit/processor/print.rb",
+    "lib/flvedit/processor/printer.rb",
+    "lib/flvedit/processor/reader.rb",
+    "lib/flvedit/processor/save.rb",
+    "lib/flvedit/processor/update.rb",
+    "lib/flvedit/runner.rb",
+    "lib/flvedit/version.rb",
     "test/fixtures/corrupted.flv",
     "test/fixtures/short.flv",
     "test/fixtures/tags.xml",
@@ -92,13 +92,13 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<packable>, [">= 1.2"])
-      s.add_runtime_dependency(%q<backports>, [">= 0"])
+      s.add_runtime_dependency(%q<backports>, [">= 1.6.8"])
     else
       s.add_dependency(%q<packable>, [">= 1.2"])
-      s.add_dependency(%q<backports>, [">= 0"])
+      s.add_dependency(%q<backports>, [">= 1.6.8"])
     end
   else
     s.add_dependency(%q<packable>, [">= 1.2"])
-    s.add_dependency(%q<backports>, [">= 0"])
+    s.add_dependency(%q<backports>, [">= 1.6.8"])
   end
 end
