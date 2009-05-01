@@ -17,7 +17,7 @@ module FLV
 
         # Prints out a hash (or any list of key-value pairs) in two columns
         def values(hash)
-          hash.map{|k,v| [k.to_s, v] }.sort.each do |key, value|
+          hash.sort.each do |key, value|
             @io.puts "#{@margin_left}#{key.to_s.ljust(@options[:column_width])}: #{value.inspect.delete(':"')}"
           end
         end
