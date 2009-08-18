@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{flvedit}
-  s.version = "0.6.4"
+  s.version = "0.7.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marc-Andr\303\251 Lafortune"]
@@ -61,6 +61,7 @@ Gem::Specification.new do |s|
      "test/fixtures/corrupted.flv",
      "test/fixtures/short.flv",
      "test/fixtures/tags.xml",
+     "test/fixtures/update.yml",
      "test/test_flv.rb",
      "test/test_flv_edit.rb",
      "test/test_flv_edit_results.rb",
@@ -74,7 +75,8 @@ Gem::Specification.new do |s|
      "test/text_flv_edit_results/join.txt",
      "test/text_flv_edit_results/print.txt",
      "test/text_flv_edit_results/stop.txt",
-     "test/text_flv_edit_results/update.txt"
+     "test/text_flv_edit_results/update.txt",
+     "test/text_flv_edit_results/update_merge.txt"
   ]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/marcandre/flvedit}
