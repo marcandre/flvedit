@@ -7,7 +7,9 @@ module FLV
       # Update is a Processor class (see Base and desc)
       class Update < Base
         include Dispatcher
-        desc "Updates FLV with an onMetaTag event containing all the relevant information."
+        desc ["Updates FLV with an onMetaTag event containing all the relevant information.",
+              "If supplied, the information of the yaml file PATH will be added"],
+              :param => {:name => "[PATH]"}
         def initialize(source=nil, options={})
           super
           @meta_data_maker = MetaDataMaker.new(source.clone, options)

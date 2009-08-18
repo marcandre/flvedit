@@ -111,6 +111,8 @@ module FLV
           meta[:keyframes][:filepositions].map! {|ts| ts + meta_size} if meta[:hasKeyframes]
           meta[:cuePoints][:filepositions].map! {|ts| ts + meta_size} if meta[:hasCuePoints]
         
+          meta.merge!(YAML.load_file(options[:update]).symbolize_keys!) if options[:update]
+        
           meta
         end
     
