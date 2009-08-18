@@ -10,8 +10,7 @@ It is meant as an improved FLVTool2, fixing the shortfalls that prompted others 
 
 FLVEdit can be used either as a command-line command or as a ruby library.
 
-== This is not a stable release
-<b>Warning:</b> The basic functionality is there, but I'll be improving features and documentation. Until version 1.0, there will most likely be many changes to the command line interface and the library API.
+<b>Note:</b> The basic functionality is there, but I'll be improving features and documentation. Until version 1.0, there will most likely be many changes to the command line interface and the library API.
 
 Comments & requests welcome...
 

@@ -11,8 +11,8 @@ module FLV
       super(Tag, &block)
     end
 
-    def self.open(*arg)
-      file = ::File.open(*arg)
+    def self.open(fn, mode = "rb")
+      file = ::File.open(fn, mode)
       begin
         file = return_value = file.packed.extend(File)
       rescue Exception
