@@ -130,7 +130,6 @@ class TestFlv < Test::Unit::TestCase
       }
       io = StringIO.new("").packed
       io.write(obj, :flv_value)
-      p io.string
       io.rewind
       assert_equal(obj, io.read(:flv_value))
       assert io.eof?
