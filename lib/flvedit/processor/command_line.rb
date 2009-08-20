@@ -22,7 +22,7 @@ module FLV
             end
           end
           puts (["Processed successfully:"] + ok).join("\n") unless ok.empty?
-          puts (["**** Processed with errors: ****"] + errors.map{|path, err| "#{path}: #{err}"}).join("\n") unless errors.empty?
+          puts (["**** Processed with errors: ****"] + errors.map{|path, err| "#{path}: #{err}"}+ err.backtrace).join("\n") unless errors.empty?
         end
       end
     end

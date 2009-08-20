@@ -38,8 +38,8 @@ begin
     EOS
     gem.authors = ["Marc-André Lafortune"]
     gem.rubyforge_project = "flvedit"
-    gem.add_dependency "packable", ">=1.2"
-    gem.add_dependency "backports", ">=1.6.8"
+    gem.add_dependency "packable", ">=1.3.2"
+    gem.add_dependency "backports", ">=1.7.1"
     gem.has_rdoc = true
     gem.rdoc_options << '--title' << 'FLV::Edit' <<
                            '--main' << 'README.rdoc' <<

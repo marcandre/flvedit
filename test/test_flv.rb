@@ -16,7 +16,7 @@ class TestFlv < Test::Unit::TestCase
           assert_equal n, FLV::Timestamp.try_convert(s).in_milliseconds
         end
       end
-
+  
       { "0" => 0 ,
         "1" => 1000,
         "1.0" => 1000,
@@ -31,7 +31,7 @@ class TestFlv < Test::Unit::TestCase
       end
     end
   end
-
+ 
   context "TimestampRange" do
     context "conversion" do
       { "1:02-" => 62..(1/0.0),
@@ -45,7 +45,7 @@ class TestFlv < Test::Unit::TestCase
       end
     end
   end
-
+ 
 
   BIT_TEST = "\x01\x02\xff"
   context "Bit reading from #{BIT_TEST.inspect}" do
@@ -72,7 +72,7 @@ class TestFlv < Test::Unit::TestCase
       end
     end
   end
-  
+    
   context "Packing" do
     context "a header" do
       setup do
@@ -116,6 +116,27 @@ class TestFlv < Test::Unit::TestCase
     end
   end
   
+  context "Packing + Unpacking" do
+    should "return the same object" do
+      obj = {
+        :event => "onMetaData"                ,
+        :audiocodecid => 2                    ,
+        :audiodatarate => 15.7066666666667    ,
+        :canSeekToEnd => false                ,
+        :hasAudio => true                     ,
+        :cuePoints => []                      ,
+        :keyframes => {:filepositions=>[846, 1968], :times=>[0.0, 0.2]},
+        :metadatadate => Time.gm(2000,"jan",1,20,15,1)
+      }
+      io = StringIO.new("").packed
+      io.write(obj, :flv_value)
+      p io.string
+      io.rewind
+      assert_equal(obj, io.read(:flv_value))
+      assert io.eof?
+    end
+  end
+
   context "Typematch" do
     setup do
       @chunks = FLV::File.open(SHORT_FLV).each.first(4)
@@ -141,5 +162,5 @@ class TestFlv < Test::Unit::TestCase
       end
     end
   end
-  
+    
 end

@@ -23,7 +23,11 @@ module FLV
           p "Opening #{@sources.first}"
           FLV::File.open(@sources.shift) do |f|
             @source = f
-            super
+            begin
+              super
+            rescue EOFError
+              p "*** Warning: unexpected EOF for file #{f.path}"
+            end
           end
         end
         

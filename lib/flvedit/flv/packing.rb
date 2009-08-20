@@ -17,7 +17,7 @@ module FLV
   
     TYPE_TO_CLASS = Hash.new do |h, type|
       #EndOfList
-      raise IOError, "Invalid type for a flash variable. #{type.inspect} is not in #{h.keys.sort.inspect}" #todo: handle error for corrupted da
+      raise IOError, "Invalid type for a flash variable. #{type.inspect} is not in #{h.keys}" #todo: handle error for corrupted da
     end.merge!(
        0 => Numeric   ,
        1 => TrueClass , # There really should be a Boolean class!
@@ -110,7 +110,14 @@ module FLV
       packer.read  do |io|
         Hash[
           io.each([String, :flv], :flv_value).
-            take_while {|str, val|  val != EndOfList.instance }.
+            # take_while {|str, val|  val != EndOfList.instance }.
+            take_while do |str, val|  
+              if str == "" && val != EndOfList.instance
+                p "***Warning: read #{val.inspect} as end of list!?"
+              end
+              val != EndOfList.instance
+              str != ""
+            end.
             map{|k,v| [k.to_sym, v]}
         ]
       end
@@ -126,14 +133,9 @@ module FLV
     
     class EndOfList # :nodoc:
       include Singleton, Packable
-      packers.set :flv, {}
-
-      def write_packed(*)
-        # no data to write
-      end
-
-      def self.read_packed(*)
-        self.instance
+      packers.set(:flv) do |packer|
+        packer.write {} # no data to write
+        packer.read {EndOfList.instance}
       end
     end
     

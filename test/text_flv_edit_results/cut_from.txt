@@ -111,4 +111,3 @@ Header| ./test/fixtures/short.flv
 3.239 | FLV::Audio tag
 3.244 | FLV::Video tag (interframe)
 3.292 | FLV::Audio tag
-3.344 | FLV::Video tag (interframe)

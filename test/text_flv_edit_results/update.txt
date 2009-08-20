@@ -4,16 +4,16 @@
 0.000 | FLV::Event tag
       | event          : onMetaData
       | audiocodecid   : 2
-      | audiodatarate  : 15.7066666666667
+      | audiodatarate  : 15.9368658399098
       | audiodelay     : 0.0
       | audiosamplerate: 11000
       | audiosamplesize: 16
       | audiosize      : 7805
       | canSeekToEnd   : false
       | cuePoints      : []
-      | datasize       : 25001
-      | duration       : 3.6
-      | filesize       : 25430
+      | datasize       : 24860
+      | duration       : 3.548
+      | filesize       : 25285
       | framerate      : 10.0
       | hasAudio       : true
       | hasCuePoints   : false
@@ -23,11 +23,11 @@
       | height         : 154
       | keyframes      : {filepositions=>[846, 1968], times=>[0.0, 0.2]}
       | lastkeyframetimestamp: 0.2
-      | lasttimestamp  : 3.5
+      | lasttimestamp  : 3.448
       | metadatacreator: flvedit........................................................
       | metadatadate   : Sat Dec 20 000000 UTC 2008
       | stereo         : false
       | videocodecid   : 4
-      | videodatarate  : 35.7577777777778
-      | videosize      : 16487
+      | videodatarate  : 35.988726042841
+      | videosize      : 16346
       | width          : 192
