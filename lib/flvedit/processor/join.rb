@@ -23,9 +23,9 @@ module FLV
           if @wait_for_keyframe
             absorb
           else
+            @last_timestamp = tag.timestamp
             tag.timestamp += @delta
           end
-          @last_timestamp = tag.timestamp
         end
         
         def on_video(tag)
@@ -50,9 +50,9 @@ module FLV
               @delta += [@last_video_timestamp + last_interval, @last_timestamp].max
               @wait_for_keyframe = true
             else
-              @delta = @last_timestamp
+              @delta += @last_timestamp
             end
-            dispatch_instead(Tag.new(@last_timestamp, evt = Event.new(:onNextSegment, :file => ::File.basename(h.path))))
+            dispatch_instead(Tag.new(@delta, evt = Event.new(:onNextSegment, :file => ::File.basename(h.path))))
           end
         end
       end

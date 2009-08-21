@@ -1,5 +1,5 @@
 *** command:
---Join ./test/fixtures/short.flv --Debug
+--Join ./test/fixtures/short.flv ./test/fixtures/short.flv --Debug
 *** result:
 Header| ./test/fixtures/short.flv
       | extra          : 
@@ -129,7 +129,7 @@ Header| ./test/fixtures/short.flv
 3.395 | FLV::Audio tag
 3.400 | FLV::Video tag (interframe)
 3.448 | FLV::Audio tag
-3.448 | FLV::Event tag
+3.500 | FLV::Event tag
       | event          : onNextSegment
       | file           : short.flv
 3.500 | FLV::Video tag (keyframe)
@@ -233,3 +233,105 @@ Header| ./test/fixtures/short.flv
 6.895 | FLV::Audio tag
 6.900 | FLV::Video tag (interframe)
 6.948 | FLV::Audio tag
+7.000 | FLV::Event tag
+7.000 | FLV::Video tag (keyframe)
+7.052 | FLV::Audio tag
+7.100 | FLV::Video tag (interframe)
+7.104 | FLV::Audio tag
+7.156 | FLV::Audio tag
+7.200 | FLV::Video tag (keyframe)
+7.208 | FLV::Audio tag
+7.261 | FLV::Audio tag
+7.300 | FLV::Video tag (interframe)
+7.313 | FLV::Audio tag
+7.365 | FLV::Audio tag
+7.400 | FLV::Video tag (interframe)
+7.417 | FLV::Audio tag
+7.470 | FLV::Audio tag
+7.500 | FLV::Video tag (interframe)
+7.522 | FLV::Audio tag
+7.574 | FLV::Audio tag
+7.600 | FLV::Video tag (interframe)
+7.626 | FLV::Audio tag
+7.679 | FLV::Audio tag
+7.700 | FLV::Video tag (interframe)
+7.731 | FLV::Audio tag
+7.783 | FLV::Audio tag
+7.800 | FLV::Video tag (interframe)
+7.835 | FLV::Audio tag
+7.888 | FLV::Audio tag
+7.900 | FLV::Video tag (interframe)
+7.940 | FLV::Audio tag
+7.992 | FLV::Audio tag
+8.000 | FLV::Video tag (interframe)
+8.044 | FLV::Audio tag
+8.097 | FLV::Audio tag
+8.100 | FLV::Video tag (interframe)
+8.149 | FLV::Audio tag
+8.200 | FLV::Video tag (interframe)
+8.201 | FLV::Audio tag
+8.253 | FLV::Audio tag
+8.300 | FLV::Video tag (interframe)
+8.306 | FLV::Audio tag
+8.358 | FLV::Audio tag
+8.400 | FLV::Video tag (interframe)
+8.410 | FLV::Audio tag
+8.462 | FLV::Audio tag
+8.500 | FLV::Video tag (interframe)
+8.515 | FLV::Audio tag
+8.567 | FLV::Audio tag
+8.600 | FLV::Video tag (interframe)
+8.619 | FLV::Audio tag
+8.671 | FLV::Audio tag
+8.700 | FLV::Video tag (interframe)
+8.724 | FLV::Audio tag
+8.776 | FLV::Audio tag
+8.800 | FLV::Video tag (interframe)
+8.828 | FLV::Audio tag
+8.880 | FLV::Audio tag
+8.900 | FLV::Video tag (interframe)
+8.933 | FLV::Audio tag
+8.985 | FLV::Audio tag
+9.000 | FLV::Video tag (interframe)
+9.037 | FLV::Audio tag
+9.089 | FLV::Audio tag
+9.100 | FLV::Video tag (interframe)
+9.142 | FLV::Audio tag
+9.194 | FLV::Audio tag
+9.200 | FLV::Video tag (interframe)
+9.246 | FLV::Audio tag
+9.298 | FLV::Audio tag
+9.300 | FLV::Video tag (interframe)
+9.351 | FLV::Audio tag
+9.400 | FLV::Video tag (interframe)
+9.403 | FLV::Audio tag
+9.455 | FLV::Audio tag
+9.500 | FLV::Video tag (interframe)
+9.507 | FLV::Audio tag
+9.559 | FLV::Audio tag
+9.600 | FLV::Video tag (interframe)
+9.612 | FLV::Audio tag
+9.664 | FLV::Audio tag
+9.700 | FLV::Video tag (interframe)
+9.716 | FLV::Audio tag
+9.768 | FLV::Audio tag
+9.800 | FLV::Video tag (interframe)
+9.821 | FLV::Audio tag
+9.873 | FLV::Audio tag
+9.900 | FLV::Video tag (interframe)
+9.925 | FLV::Audio tag
+9.977 | FLV::Audio tag
+10.000 | FLV::Video tag (interframe)
+10.030 | FLV::Audio tag
+10.082 | FLV::Audio tag
+10.100 | FLV::Video tag (interframe)
+10.134 | FLV::Audio tag
+10.186 | FLV::Audio tag
+10.200 | FLV::Video tag (interframe)
+10.239 | FLV::Audio tag
+10.291 | FLV::Audio tag
+10.300 | FLV::Video tag (interframe)
+10.343 | FLV::Audio tag
+10.395 | FLV::Audio tag
+10.400 | FLV::Video tag (interframe)
+10.448 | FLV::Audio tag
