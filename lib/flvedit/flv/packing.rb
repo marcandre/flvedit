@@ -134,7 +134,7 @@ module FLV
     class EndOfList # :nodoc:
       include Singleton, Packable
       packers.set(:flv) do |packer|
-        packer.write {} # no data to write
+        packer.write { |dummy| } # no data to write
         packer.read {EndOfList.instance}
       end
     end
