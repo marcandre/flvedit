@@ -55,7 +55,7 @@ module FLV
         end
       
         def meta_data
-          frame_sequence_in_ms = @video_interval_stats.index(@video_interval_stats.values.max)
+          frame_sequence_in_ms = @video_interval_stats.key(@video_interval_stats.values.max)
           last_ts = @info.values.map{|h| h.last}.compact.map(&:timestamp).map(&:in_seconds).max
           duration = last_ts + frame_sequence_in_ms/1000.0
 
